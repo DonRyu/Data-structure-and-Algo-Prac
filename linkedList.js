@@ -12,22 +12,46 @@ class LinkedList {
     this.size = 0;
   }
 
-  //헤드가 없는 경우=> 해당 노드에 벨류를 넣고 해드는 그게 된다
-  //헤드가 있는 경우=> 해당 노드에 벨류를 넣고 그게 현재 해드를 가르키게 하고 해드를 옮긴다
-  add(value) {
-    let node = new Node();
+  add(element) {
+    let node = new Node(null, element);
     if (this.head === null) {
-      node.element = value;
       this.head = node;
     } else {
-      node.element = value;
-      node.next = this.head;
-      this.head = node;
+      let curr = this.head;
+      while (curr.next) {
+        curr = curr.next;
+      }
+      curr.next = node
     }
     this.size += 1;
   }
 
-  insert(index) {}
+  // 0번째로 인서트 할때
+  //중간에 인서트 할때
+  //리스트에 값이 없을때, 인덱스가 list.length 보다 클때
+  insert(index, element) {
+    let newNode = new Node(null, element);
+    let curr, prev;
+    curr = this.head;
+
+    if (index === 0) {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    if (this.size === 0 || index > this.size) {
+      console.log("Hey man, no values in the List");
+    }
+
+    for (let i = 0; i < index; i++) {
+      prev = curr;
+      curr = prev.next;
+    }
+    console.log("prev", prev);
+    console.log("curr", curr);
+
+    prev.next = newNode;
+    newNode.next = curr;
+  }
 
   printList() {
     var curr = this.head;
@@ -41,11 +65,8 @@ class LinkedList {
 }
 
 const LL = new LinkedList();
-
 LL.add(1);
 LL.add(2);
 LL.add(3);
-LL.add(4);
-LL.add(5);
-
+LL.insert(2, 9999);
 LL.printList();
