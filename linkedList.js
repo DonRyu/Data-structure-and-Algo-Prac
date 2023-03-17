@@ -1,3 +1,8 @@
+//Array Random access o(1), Insert/Delete o(N)
+//Linked List Random access o(N), Insert/Delete o(1)
+
+
+
 class Node {
   // 노드는 값을 담고 있는 엘리먼트가 있고, 다음 값을 가르키는 포인터가 있다.
   constructor(next, element) {
