@@ -56,29 +56,14 @@ class LinkedList {
     newNode.next = curr;
   }
 
-  // 지울놈, 지울놈-1,지울놈+1을 찾는다
-  // 지울놈-1.next = 지울놈+1
-  // 지울놈을 지운다
-  delete(index) {
-    if (index > this.size) {
-      console.log("Hey, index is bigger than size ");
+  delete() {
+    if (this.size === 0) {
+      console.log('No values')
     }
-    if (index === 0) {
-      let curr = this.head;
-      this.head = curr.next;
-      curr = undefined;
-      return;
-    }
-    let prev, curr, aft;
-    curr = this.head;
-
-    for (let i = 0; i < index; i++) {
-      prev = curr;
-      curr = prev.next;
-    }
-    aft = curr.next;
-    prev.next = aft;
+    let curr = this.head;
+    this.head = curr.next;
     curr = undefined;
+    return;
   }
 
   findByIndex(index) {
@@ -97,17 +82,16 @@ class LinkedList {
 
   findByElement(element) {
     let curr = this.head;
-    let prev
+    let prev;
     for (let i = 0; i < this.size; i++) {
-      prev = curr
-      if(prev.element === element){
-        console.log(i)
-        return 
+      prev = curr;
+      if (prev.element === element) {
+        console.log(i);
+        return;
       }
-      curr = curr.next
-      
+      curr = curr.next;
     }
-    console.log('There is no element')
+    console.log("There is no element");
   }
 
   printList() {
@@ -119,14 +103,15 @@ class LinkedList {
     }
     console.log(result);
   }
-
 }
 
 const LL = new LinkedList();
 LL.add(1);
 LL.add(2);
 LL.add(22);
+LL.delete();
+LL.delete();
 // LL.insert(2, 9999);
 // LL.findByIndex(1);
 // LL.findByElement(2)
-// LL.printList();
+LL.printList();

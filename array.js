@@ -1,3 +1,6 @@
+//Array Random access o(1), Insert/Delete o(N)
+//Linked List Random access o(N), Insert/Delete o(1)
+
 class ArrayPrac {
   constructor() {
     this.length = 0;
