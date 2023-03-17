@@ -1,4 +1,3 @@
-//Array Random access o(1), Insert/Delete o(N)
 //Linked List Random access o(N), Insert/Delete o(1)
 
 class Node {
@@ -56,6 +55,7 @@ class LinkedList {
     newNode.next = curr;
   }
 
+  // 그냥 포인터만 없애주면됨
   delete() {
     if (this.size === 0) {
       console.log('No values')
@@ -66,7 +66,8 @@ class LinkedList {
     return;
   }
 
-  findByIndex(index) {
+  // 전부 순회 해야됨 o(n)
+  find(index) {
     let curr = this.head;
     let after;
     if (this.size === 0 || index > this.size) {
@@ -112,6 +113,6 @@ LL.add(22);
 LL.delete();
 LL.delete();
 // LL.insert(2, 9999);
-// LL.findByIndex(1);
+// LL.find(1);
 // LL.findByElement(2)
 LL.printList();
