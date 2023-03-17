@@ -119,6 +119,7 @@ class LinkedList {
     }
     console.log(result);
   }
+
 }
 
 const LL = new LinkedList();
@@ -127,5 +128,5 @@ LL.add(2);
 LL.add(22);
 // LL.insert(2, 9999);
 // LL.findByIndex(1);
-LL.findByElement(2)
+// LL.findByElement(2)
 // LL.printList();
