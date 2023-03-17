@@ -1,8 +1,6 @@
 //Array Random access o(1), Insert/Delete o(N)
 //Linked List Random access o(N), Insert/Delete o(1)
 
-
-
 class Node {
   // 노드는 값을 담고 있는 엘리먼트가 있고, 다음 값을 가르키는 포인터가 있다.
   constructor(next, element) {
@@ -83,6 +81,35 @@ class LinkedList {
     curr = undefined;
   }
 
+  findByIndex(index) {
+    let curr = this.head;
+    let after;
+    if (this.size === 0 || index > this.size) {
+      console.log("Hey man, no values in the List");
+      return;
+    }
+    for (let i = 0; i < index; i++) {
+      after = curr.next;
+      curr = after;
+    }
+    console.log(curr.element);
+  }
+
+  findByElement(element) {
+    let curr = this.head;
+    let prev
+    for (let i = 0; i < this.size; i++) {
+      prev = curr
+      if(prev.element === element){
+        console.log(i)
+        return 
+      }
+      curr = curr.next
+      
+    }
+    console.log('There is no element')
+  }
+
   printList() {
     let curr = this.head;
     let result = "";
@@ -97,7 +124,8 @@ class LinkedList {
 const LL = new LinkedList();
 LL.add(1);
 LL.add(2);
-LL.add(3);
+LL.add(22);
 // LL.insert(2, 9999);
-LL.delete(0);
-LL.printList();
+// LL.findByIndex(1);
+LL.findByElement(2)
+// LL.printList();
