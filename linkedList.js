@@ -79,13 +79,13 @@ class LinkedList {
   }
 
   printList() {
-    var curr = this.head;
-    var str = "";
+    let curr = this.head;
+    let result = "";
     while (curr) {
-      str += curr.element + " ";
+      result += `${curr.element} `;
       curr = curr.next;
     }
-    console.log(str);
+    console.log(result);
   }
 }
 
