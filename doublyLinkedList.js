@@ -14,33 +14,32 @@ class DoublyLinkedList {
 
   push(element) {
     let node = new Node(element);
-    let prev, curr;
+    let curr;
     if (this.head === null) {
       this.head = node;
+      return
     }
-
     curr = this.head;
-
-    while (curr) {
-      prev = curr;
+    while (curr.next) {
       curr = curr.next;
     }
-    prev.next = node;
+    curr.next = node
     // node.prev = prev;
     this.size += 1;
   }
-
-  print() {
-    let str;
-    while (curr.next) {
-      str = `${next.element} `;
+  
+  printList() {
+    let curr = this.head;
+    let result = "";
+    while (curr) {
+      result += `${curr.element} `;
       curr = curr.next;
     }
-    console.log(str);
+    console.log(result);
   }
 }
 
 let DLL = new DoublyLinkedList();
 DLL.push(1);
 DLL.push(2);
-DLL.print();
+ DLL.printList();
