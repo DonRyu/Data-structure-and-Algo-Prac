@@ -9,25 +9,60 @@ class Node {
 class DoublyLinkedList {
   constructor() {
     this.head = null;
+    this.tail = null;
     this.size = 0;
   }
 
   push(element) {
     let node = new Node(element);
-    let curr;
     if (this.head === null) {
       this.head = node;
-      return
+      this.tail = node;
+      return;
     }
-    curr = this.head;
-    while (curr.next) {
-      curr = curr.next;
-    }
-    curr.next = node
-    // node.prev = prev;
-    this.size += 1;
+    this.tail.next = node;
+    node.prev = this.tail;
+    this.tail = node;
+    this.size++;
   }
-  
+
+  pop() {
+    if (this.size == 1) {
+      this.head = undefined;
+      this.tail = undefined;
+      return;
+    }
+    let nodeToRemove = this.tail;
+    this.tail = nodeToRemove.prev;
+    this.tail.next = null;
+    nodeToRemove.prev = undefined;
+    this.size--;
+  }
+
+  shift() {
+    this.head = this.head.next;
+    this.head.prev = undefined;
+    this.size--;
+  }
+
+  get(index) {
+    let mid = Math.round(this.size / 2);
+    let curr;
+    if (index > this.size) return console.log("index>=this.size");
+    if (index <= mid) {
+      curr = this.head;
+      for (let i = 0; i < index; i++) {
+        curr = curr.next;
+      }
+    } else {
+      curr = this.tail;
+      for (let i = this.size; i >= index; i--) {
+        curr = curr.prev;
+      }
+    }
+    console.log(curr.element);
+  }
+
   printList() {
     let curr = this.head;
     let result = "";
@@ -42,4 +77,10 @@ class DoublyLinkedList {
 let DLL = new DoublyLinkedList();
 DLL.push(1);
 DLL.push(2);
- DLL.printList();
+DLL.push('sibar');
+DLL.push(4);
+DLL.push(5);
+DLL.push(6);
+
+DLL.get(2);
+// DLL.printList();
