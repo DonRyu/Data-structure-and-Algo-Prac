@@ -63,6 +63,69 @@ class DoublyLinkedList {
     console.log(curr.element);
   }
 
+  set(index, element) {
+    let mid = Math.round(this.size / 2);
+    let curr;
+    let count;
+    if (index > this.size) {
+      console.log("index over size");
+      return;
+    }
+    if (index < mid) {
+      curr = this.head;
+      count = 0;
+      while (count < index) {
+        curr = curr.next;
+        count++;
+      }
+    } else {
+      curr = this.tail;
+      count = this.size;
+      while (count > index) {
+        curr = curr.prev;
+        count--;
+      }
+    }
+    curr.element = element;
+  }
+
+  insert(index, element) {
+    let newNode = new Node(element);
+    let mid = Math.round(this.size / 2);
+    let curr, prev;
+    let count = 0;
+    if (index > this.size) {
+      console.log("index over size");
+      return;
+    }
+    if (index < mid) {
+      curr = this.head;
+      count = 0;
+      while (count < index) {
+        prev = curr;
+        curr = curr.next;
+        count++;
+      }
+      prev.next = newNode;
+      newNode.prev = prev;
+      newNode.next = curr;
+      curr.prev = newNode;
+    } else {
+      curr = this.tail;
+      count = this.size;
+      while (count > index) {
+        prev = curr;
+        curr = curr.prev;
+        count--;
+      }
+      prev.prev = newNode;
+      newNode.next = prev;
+      newNode.prev = curr;
+      curr.next = newNode;
+    }
+    this.size++
+  }
+
   printList() {
     let curr = this.head;
     let result = "";
@@ -77,10 +140,11 @@ class DoublyLinkedList {
 let DLL = new DoublyLinkedList();
 DLL.push(1);
 DLL.push(2);
-DLL.push('sibar');
+DLL.push("sibar");
 DLL.push(4);
 DLL.push(5);
 DLL.push(6);
 
-DLL.get(2);
-// DLL.printList();
+// DLL.set(2, "Waka Waka");
+DLL.insert(4, "Waka");
+DLL.printList();
