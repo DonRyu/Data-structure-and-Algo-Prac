@@ -61,7 +61,7 @@ class DoublyLinkedList {
       }
     }
     // console.log(curr.element);
-    return curr
+    return curr;
   }
 
   set(index, element) {
@@ -124,35 +124,32 @@ class DoublyLinkedList {
       newNode.prev = curr;
       curr.next = newNode;
     }
-    this.size++
+    this.size++;
   }
 
-  // 0번 째를 지울때 
+  // 0번 째를 지울때
   // 마지막것을 지울때
-  // 인덱스>this.size 일때 
+  // 인덱스>this.size 일때
 
-  remove(index){
-    let nodeToRemove = this.get(index)
-    let prev = nodeToRemove.prev
-    let aft = nodeToRemove.next
+  remove(index) {
+    let nodeToRemove = this.get(index);
+    let prev = nodeToRemove.prev;
+    let aft = nodeToRemove.next;
 
-    if(index===0){
-      return this.shift()
+    if (index === 0) {
+      return this.shift();
     }
-    if(index === this.size){
-      let prev = this.tail.prev;
-      this.tail = prev
-      this.tail.next = undefined;
-      console.log('this.tail',this.tail)
-      this.size--;
+    if (index === this.size) {
+      return  this.pop();
     }
 
-    prev.next = aft
-    aft.prev = prev
-    nodeToRemove.next = undefined
-    nodeToRemove.prev = undefined
+    console.log("asdasdasdasd");
+    prev.next = aft;
+    aft.prev = prev;
+    nodeToRemove.next = undefined;
+    nodeToRemove.prev = undefined;
 
-    this.length--
+    this.length--;
   }
 
   printList() {
@@ -167,12 +164,12 @@ class DoublyLinkedList {
 }
 
 let DLL = new DoublyLinkedList();
+DLL.push(0);
 DLL.push(1);
-DLL.push(2);
 DLL.push("sibar");
+DLL.push(3);
 DLL.push(4);
 DLL.push(5);
-DLL.push(6);
 
-DLL.remove(5)
+DLL.remove(5);
 DLL.printList();
