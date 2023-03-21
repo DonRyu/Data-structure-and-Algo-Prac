@@ -60,7 +60,8 @@ class DoublyLinkedList {
         curr = curr.prev;
       }
     }
-    console.log(curr.element);
+    // console.log(curr.element);
+    return curr
   }
 
   set(index, element) {
@@ -126,6 +127,34 @@ class DoublyLinkedList {
     this.size++
   }
 
+  // 0번 째를 지울때 
+  // 마지막것을 지울때
+  // 인덱스>this.size 일때 
+
+  remove(index){
+    let nodeToRemove = this.get(index)
+    let prev = nodeToRemove.prev
+    let aft = nodeToRemove.next
+
+    if(index===0){
+      return this.shift()
+    }
+    if(index === this.size){
+      let prev = this.tail.prev;
+      this.tail = prev
+      this.tail.next = undefined;
+      console.log('this.tail',this.tail)
+      this.size--;
+    }
+
+    prev.next = aft
+    aft.prev = prev
+    nodeToRemove.next = undefined
+    nodeToRemove.prev = undefined
+
+    this.length--
+  }
+
   printList() {
     let curr = this.head;
     let result = "";
@@ -145,6 +174,5 @@ DLL.push(4);
 DLL.push(5);
 DLL.push(6);
 
-// DLL.set(2, "Waka Waka");
-DLL.insert(4, "Waka");
+DLL.remove(5)
 DLL.printList();
