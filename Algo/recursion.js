@@ -20,11 +20,11 @@ function factorial(num){
     // return base
 
     if(num === 0) return 1;
-    if(num === 1) return num;
-    num--;
-    return 1 *  factorial(num)
+    if(num === 1) return 1;
+    
+    return num *  factorial(num-1);
  }
 
 
 
- console.log(factorial(3))
+ console.log(factorial(0))
