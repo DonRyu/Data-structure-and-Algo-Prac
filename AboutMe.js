@@ -1,5 +1,3 @@
-
-
 class Don_Ryu{
     type = ['Full Stack Developer'];
     languages = ['TS','JS','Java','C#']
