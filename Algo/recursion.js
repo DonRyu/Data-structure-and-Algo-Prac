@@ -35,31 +35,51 @@ function recursiveRange(num) {
   return num + recursiveRange(num - 1);
 }
 
+// 1,1,2,3,5,8,13
+// 5
 
-const fibonacci = function(n) {
-  if (n === 0) return 0;
-
+const fibFor = (n) => {
   let pre = 1;
-  let cur = 1;
+  let curr = 1;
   let fin = 2;
 
-  for (let i = 2; i < n; i++) {
-    pre = cur; // pre === 1
-    cur = fin; // cur === 1
-    fin = pre + cur; // fin === 2
+  for (let i = 4; i <= n; i++) {
+    pre = curr; // 1 = 1
+    curr = fin; // 1 = 2
+    fin = pre + curr; // 2 = 3
   }
   return fin;
-
 };
 
 // 5
 // 1,1,2,3,5
 
-function fib(n){
+function fib(n) {
   if (n <= 2) return 1;
-  return fib(n-1) + fib(n-2);
+  return fib(n - 1) + fib(n - 2);
 }
 
-// fib(3) + fib()
+//[2,3,4]
 
-console.log(fib(5))
+function same(arr, arr2) {
+  let squaredArray = [];
+
+  if (arr.length !== arr2.length) {
+    return false;
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    squaredArray.push(arr[i] * arr[i]);
+  }
+
+  let isSame = squaredArray.filter((item, key) => {
+    return item !== arr2[key];
+  });
+
+  return isSame.length > 0 ? false : true;
+}
+
+
+
+
+
