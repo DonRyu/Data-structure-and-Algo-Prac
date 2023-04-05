@@ -24,17 +24,23 @@ const sumZero = (arr) => {
 // arr -2,-1,-1,0,1
 
 function countUniqueValues(arr) {
-    let l = 0;
-     if (arr.length === 0) {
-       return 0;
-     }
-   
-     for (let r = 1; r < arr.length; r++) {
-       if (arr[l] !== arr[r]) {
-         l++;
-         arr[l] = arr[r];
-       }
-     }
-     return l + 1;
-    
-   }
+  let l = 0;
+  if (arr.length === 0) {
+    return 0;
+  }
+
+  for (let r = 1; r < arr.length; r++) {
+    if (arr[l] !== arr[r]) {
+      l++;
+      arr[l] = arr[r];
+    }
+  }
+  return l + 1;
+}
+
+// [1,2,5,2,4] , 2 => 7
+const maxSubArraySum = ()=>{
+
+}
+
+console.log(Math.max(1,10))
