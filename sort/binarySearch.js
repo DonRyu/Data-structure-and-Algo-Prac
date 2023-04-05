@@ -1,29 +1,45 @@
-// middleValue > value =>  start가 middle
 
-const binarySearch = (arr, value) => {
+// !important, need to put -1 or +1 at middle to make star <= end situation
+const binarySearchError = (arr, value) => {
   let start = 0;
-  let end = arr.length - 1;
-  let middle = Math.floor((start + end) / 2);
-
+  let end = arr.length - 1; //3
+  let middle = Math.floor((start + end) / 2); // 1
   if (arr.length < 1) {
     return null;
   }
-
-    
-  // 1,2,3,4,5,6,7  => 6
-  //
-  while (arr[middle] !== value) {
-
-    if (arr[middle] > value) {
-      start = middle;
+  // middle = 1
+  while (arr[middle] !== value && start <= end) {
+    if (value < arr[middle]) { // 100 < 1
+      end = middle - 1;
     } else {
-      end = middle;
+      start = middle + 1; 
+      console.log('start',start)
     }
     middle = Math.floor((start + end) / 2);
-    console.log('middle',middle)
   }
-
-  return middle
+  if (arr[middle] === value) {
+    return middle;
+  }
+  return -1;
 };
 
- console.log(binarySearch([1,2,3,4,5,6],5))
+console.log(binarySearchError([1, 2, 3, 4], 100));
+
+// Original Solution
+function binarySearch(arr, elem) {
+  var start = 0;
+  var end = arr.length - 1;
+  var middle = Math.floor((start + end) / 2);
+  while (arr[middle] !== elem && start <= end) {
+    if (elem < arr[middle]) {
+      end = middle - 1;
+    } else {
+      start = middle + 1;
+    }
+    middle = Math.floor((start + end) / 2);
+  }
+  if (arr[middle] === elem) {
+    return middle;
+  }
+  return -1;
+}
