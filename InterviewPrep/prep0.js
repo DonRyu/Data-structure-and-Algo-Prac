@@ -35,10 +35,43 @@ function getMatchingCharacters(string1, string2) {
     let set1 = new Set(string1);
     let set2 = new Set(string2);
  
+    console.log('set2',set2)
 
     let matchingCharacters = new Set([...set1].filter(char => set2.has(char)));
   
     return matchingCharacters;
   }
 
-console.log(getMatchingCharacters('ads hello','dddd HELLO'))
+ console.log('====>',getMatchingCharacters('dddd','dddd '))
+
+let string1 = "Hello World";
+let string2 = "Hey world";
+let nonMatchingCharacters = "";
+
+for (let i = 0; i < string1.length; i++) {
+  let char = string1[i];
+  if (!string2.includes(char) && !nonMatchingCharacters.includes(char)) {
+    nonMatchingCharacters += char;
+  }
+}
+
+// console.log("Non-matching characters:", nonMatchingCharacters);
+
+function countVowelsAndConsonants(str) {
+    let vowelsCount = 0;
+    let consonantsCount = 0;
+    
+    // loop through each character in the string
+    for (let i = 0; i < str.length; i++) {
+      let char = str[i].toLowerCase();
+      
+      // check if the character is a vowel
+      if (char === 'a' || char === 'e' || char === 'i' || char === 'o' || char === 'u') {
+        vowelsCount++;
+      } else if (char >= 'a' && char <= 'z') {
+        consonantsCount++;
+      }
+    }
+    
+    return { vowels: vowelsCount, consonants: consonantsCount };
+  }
