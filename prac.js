@@ -69,10 +69,8 @@ class LinkedList {
 }
 
 let LL = new LinkedList();
-// LL.Add(2);
 LL.Add(3);
 LL.Add(4);
 LL.Delete();
-// LL.Delete();
 
 LL.Print();
