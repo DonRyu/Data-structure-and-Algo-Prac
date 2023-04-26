@@ -24,11 +24,10 @@ const palinCreator = (str) => {
 
   for (let i = 0; i < str.length; i++) {
     let oneLetter = str.slice(0, i) + str.slice(i + 1);
-
     for (let j = i; j < oneLetter.length; j++) {
       let twoLetters = oneLetter.slice(0, j) + oneLetter.slice(j + 1);
-     
-      if (isPalindrom(twoLetters)) return `${str[i]}${str[j]}`;
+     console.log(`${i}   ${j}`)
+      if (isPalindrom(twoLetters)) return `${str[i]}${oneLetter[j]}`;
     }
   }
 
@@ -47,4 +46,4 @@ const isPalindrom = (str) => {
 };
 
 
-console.log("===>", palinCreator("moddom"));
+console.log("===>", palinCreator("asxox"));
