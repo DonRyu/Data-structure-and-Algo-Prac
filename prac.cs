@@ -1,38 +1,45 @@
+// Online C# Editor for free
+// Write, Edit and Run your C# code using C# Online Compiler
 using System;
+using System.Collections.Generic;
 
-class MainClass {
-  public static void Main (string[] args) {
-    Console.WriteLine (PalindromeCreator("abjchba"));
-    Console.WriteLine (PalindromeCreator("kjjjhjjj"));
-    Console.WriteLine (PalindromeCreator("abcde"));
-  }
-
-  static string PalindromeCreator(string str) {
-    if (IsPalindrome(str)) return "palindrome";
-
-    for (int i = 0; i < str.Length; i++) {
-      string removed = str.Remove(i, 1);
-      if (IsPalindrome(removed)) return str[i].ToString();
+public class HelloWorld
+{
+    public static void Main(string[] args)
+    {
+       
+         Console.WriteLine(PalindromeCreate("lmadamp"));
     }
-
-    for (int i = 0; i < str.Length; i++) {
-      string oneLetterRemoved = str.Remove(i, 1);
-      for (int j = i; j < oneLetterRemoved.Length; j++) {
-        string twoLettersRemoved = oneLetterRemoved.Remove(j, 1);
-        if (IsPalindrome(twoLettersRemoved)) return $"{str[i]}{oneLetterRemoved[j]}";
-      }
+    
+    public static string PalindromeCreate(string str)
+{
+    
+    if(IsPalindrome(str)) return "Palindrome";
+    
+    //remove one letter
+    for(int i = 0; i<str.Length; i++){
+        string oneLetter = str.Remove(i,1);
+        if(IsPalindrome(oneLetter)) return str[i].ToString();
     }
-
+    
+    //remove two letters
+    for(int i = 0; i<str.Length; i++){
+        string oneLetter = str.Remove(i,1);
+        for(int j = i; j<oneLetter.Length; j++){
+            string twoLetters = oneLetter.Remove(j,1);
+            if(IsPalindrome(twoLetters)) return $"{str[i]}{oneLetter[j]}";
+        }
+    }
+    
     return "not possible";
-  }
+}
 
-  static bool IsPalindrome(string str) {
-    if (str.Length < 2) return false;
-
-    for (int i = 0, j = str.Length - 1; i < j; i++, j--) {
-      if (str[i] != str[j]) return false;
+    
+    public static bool IsPalindrome(string str){
+       char[] arr = str.ToCharArray();
+       Array.Reverse(arr);
+       string reversedStr = new String(arr);
+       return reversedStr == str ? true : false;
+    
     }
-
-    return true;
-  }
 }
