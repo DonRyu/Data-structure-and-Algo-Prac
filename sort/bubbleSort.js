@@ -1,5 +1,5 @@
 
-
+// O(n^2)
 const bubbleSort = (arr) => {
   let noSwap; // Optimization
   for (let i = arr.length; i > 0; i--) {
