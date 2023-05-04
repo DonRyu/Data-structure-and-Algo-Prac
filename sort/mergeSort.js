@@ -1,6 +1,19 @@
-// Merges two already sorted arrays
+// n log n
+// log n 인 이유는 어레이 자체를 계속 divide 함
+// 거기에 + n인 이유는 divide 된걸 계속 merge 함수가 merge한뒤에 다시 merge를 반복함 그래서 n 이 붙음 
+
+const mergeSort = (arr) => {
+  if (arr.length <= 1) return arr;
+  let mid = Math.floor(arr.length / 2);
+  let first = mergeSort(arr.slice(0, mid));
+  let second = mergeSort(arr.slice(mid));
+  return merge(first, second);
+};
+
+// console.log(mergeSort([61, 2, 1]));
+
 function merge(arr1, arr2) {
-  let results = []; // 1,2,3,4,5,6
+  let results = [];
   let i = 0;
   let j = 0;
 
@@ -23,12 +36,5 @@ function merge(arr1, arr2) {
   }
   return results;
 }
-merge([100, 200], [1, 2, 3, 5, 6]);
 
-const mergeSort = (arr, arr2) => {
 
-    
-    
-};
-
-console.log([2, 3, 4, 5].slice(0, 1));
