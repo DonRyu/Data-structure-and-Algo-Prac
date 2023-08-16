@@ -72,6 +72,18 @@ const findMax = (arr)=>{
 }
 
 
+// jason
+const maximizeGreatness = (nums) => {
+  nums.sort((a, b) => a - b); // O (n log(n))
+  let idx = 0;
+
+  for (const el of nums) {
+      if (el > nums[idx]) {
+          idx += 1;
+      }
+  }
+  return idx;
+};
 
 
 console.log(findMax([5,1,3]))

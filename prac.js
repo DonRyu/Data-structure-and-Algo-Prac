@@ -1,30 +1,37 @@
 
 
+// [1, 3, 5, 2, 1, 3, 1]
+// [2, 5, 1, 3, 3, 1, 1]
+//  1  1      1  1     
 
-const two = ()=>{
-    let map = {}
+// 3 5 1
+// 5 1 3 => 2
 
 
-    for (let i = 0; i < array.length; i++) {
-        let value = arr[i]
-        let removed = target -arr[i]
-        
-        // 0 
-        // undefined (x), undefined 안쓰는게 좋다
+// 3    5    1
 
-        if(map[removed] >=0){
-                return 
-        }else{
-            map[value] = arr[i]
-        }
+// 135  35  135
+// 1    1 => 2
+
+//n^2
+
+
+const greatness = (arr)=>{
+    let sortedArr =  [...arr].sort((a,b)=>a-b); //n
+    let count = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        let index = arr.findIndex((item)=>item>sortedArr[i]) // n^2
+
+         if(index !=-1){
+            count++;
+            //sortedArr[index]= undefined;    
+            sortedArr[index]= -Infinity;
+         }
     }
+    return count;
 }
 
-// 1 2 3 target 5
-// 5-1 4
-// 5-2 3
-// 5-3 2
 
-// 1 0
-// 2 1
-// 3 2
+
+console.log(greatness([3,5,1]))
