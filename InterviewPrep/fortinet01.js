@@ -64,6 +64,7 @@ const findMax = (arr)=>{
     if(index != -1){
       count++;
       sorted[index] = undefined;
+      //sorted[index] = -Infinity; 
     }  
   }
 
