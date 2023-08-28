@@ -1,18 +1,23 @@
 
 
-// 1 2 3 
+
+// 2 3 4
+// 1 2 6 
+// 12 4 1
+// 12 8 6
+
 var productExceptSelf = function(nums) {
  
     const prefix = [1];
-    const suffix = [1];
+    const suffix = [];
     const result = []
     suffix[nums.length-1] = 1;
   
-    // 1 2
+    // 0 1
     let prefixValue = 1
-    for (let i = 1; i < nums.length; i++) {
-        prefixValue *= nums[i-1]
-        prefix[i] = prefixValue
+    for (let i = 0; i < nums.length-1; i++) {
+        prefixValue *= nums[i]
+        prefix[i+1] = prefixValue
     }
 
     // 2 1 
