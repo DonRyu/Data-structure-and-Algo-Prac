@@ -12,4 +12,12 @@ var maxSubArray = function(nums) {
     return max
 };
 
+for (let index = 0; index < array.length; index++) {
+   for (let j = index; j < array.length; j++) {
+
+    
+   }
+    
+}
+
 console.log(maxSubArray([-1]))
