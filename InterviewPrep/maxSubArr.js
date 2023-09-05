@@ -1,18 +1,15 @@
 var maxSubArray = function(nums) {
-    let max = nums[0];
-    let currSum = 0;
-  
-    for(let i =0; i<nums.length; i++){
-      currSum += nums[i]
+    let max = nums[0]
 
-      if(currSum < nums[i]){
-        currSum = nums[i]
-      }
-
-      max = Math.max(currSum,max)
-
+    for (let i = 0; i < nums.length; i++) {
+        let currSum =0;
+        for (let j = i; j < nums.length; j++) {
+            currSum += nums[j]
+            max = Math.max(max,currSum)
+        }
     }
+
     return max
 };
 
-console.log(maxSubArray([-2,1,-3]))
+console.log(maxSubArray([-1]))
