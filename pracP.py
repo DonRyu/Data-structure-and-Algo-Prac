@@ -1,8 +1,12 @@
-my_set = {1,2,3}
-my_dict = {0:'a',1:'b'}
-my_dict[0] = 'a'
-my_dict[0] = 'a'
-my_dict[0] = 'a'
 
 
-print(my_dict)
+grid = [[1, 1, 1], [1, 0, 1], [1, 1, 1]]
+
+n = len(grid)
+m = len(grid[0])
+
+dp = [[0]* m for _ in range(n)]
+
+test = [[1]*5]
+
+print(dp)
