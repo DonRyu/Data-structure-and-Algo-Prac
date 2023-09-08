@@ -1,7 +1,7 @@
 def findSafeWays(grid):
     n = len(grid)
     m = len(grid[0])
-    mod = 10**7 + 7
+    mod = (10**7) + 7
 
     # Create a 2D DP array
     dp = [[0] * m for _ in range(n)]
