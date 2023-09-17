@@ -1,21 +1,40 @@
-def closestSum(nums,target):
-    l,r = 0, len(nums)-1
-    closest_sum = float('inf')
+def square(nums):
+    new_arr = []
 
-    for i in range(len(nums)):
-        l = i+1
+    for i in nums:
+        new_arr.append(i*i)
+
+    new_arr.sort()
+    return new_arr
+
+def square2(nums):
+    new_arr = []
+    l,r = 0,len(nums)-1
+
+    while l < r:
+        if nums[l]*nums[l] > nums[r]*nums[r]:
+            new_arr.append(nums[r]*nums[r])
+            r -= 1
+        else:    
+            new_arr.append(nums[l]*nums[l])
+            l += 1
+
+    new_arr.sort()        
+    return new_arr
+
+
+
+def sortedSquares(nums):
+        new_arr = []
+        l,r = 0,len(nums)-1
 
         while l <= r:
-                curr_sum = nums[i]+nums[l]+nums[r]
-
-                if(closest_sum>abs(target-curr_sum)):
-                    closest_sum = abs(target-curr_sum)
-
-                if curr_sum < target:
-                    l +=1
-                if  curr_sum > target:  
-                    r -=1
-                if  curr_sum == target:
-                    return curr_sum    
-                
-    return closest_sum
+            if nums[l] * nums[l] > nums[r] * nums[r]:
+                new_arr.append(nums[l]*nums[l])
+                r -= 1
+            else:    
+                new_arr.append(nums[r]*nums[r])
+                l += 1      
+        return new_arr[::-1]
+    
+print(sortedSquares([1,2,3,4]))
