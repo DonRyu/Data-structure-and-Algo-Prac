@@ -1,26 +1,23 @@
-def square(nums):
-    new_arr = []
+def findClosest(nums, target):
+    nums.sort()
+    closest_sum = float("inf")
 
-    for i in nums:
-        new_arr.append(i*i)
+    for i in range(len(nums) - 2):
+        l, r = i + 1, len(nums) - 1
 
-    new_arr.sort()
-    return new_arr
-       
+        while l < r:
+            curr_sum = nums[i] + nums[l] + nums[r]
 
+            if abs(target - curr_sum) < abs(target - closest_sum):
+                closest_sum = curr_sum
 
-
-def sortedSquares(nums):
-        new_arr = []
-        l,r = 0,len(nums)-1
-
-        while l <= r:
-            if nums[l] * nums[l] > nums[r] * nums[r]:
-               new_arr.append(nums[l]*nums[l])
-               r -= 1
+            if curr_sum > target:
+                l += 1
+            elif curr_sum < target:
+                r -= 1
             else:
-               new_arr.append(nums[r]*nums[r])
-               l +=1
-        return new_arr[::-1]
-    
-print(sortedSquares([1,2,3,4]))
+                return curr_sum
+            
+    return closest_sum  
+
+print(findClosest([0,0,0],1))
