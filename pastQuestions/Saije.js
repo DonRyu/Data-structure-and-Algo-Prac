@@ -17,35 +17,43 @@
 // L3,L4 => [ L3 , L4]
 
 let data = [
-    {
-      key: "L4",
-      address: "123 kings road",
-      date: "2022",
-    },
-    {
-      key: "L1",
-      address: "123 kings road",
-      date: "2020",
-    },
-    {
-      key: "L2",
-      address: "queen road",
-      date: "2020",
-    },
-    {
-      key: "L3",
-      address: "queen road",
-      date: "1992",
-    },
-  ];
-  
-  // categorized by address
-  // find the max date
-  
-  const findLatestAddress = (data) => {
-      
-    
-  
-  };
-  
-  
+  {
+    key: "L4",
+    address: "123 kings road",
+    date: "2022",
+  },
+  {
+    key: "L1",
+    address: "123 kings road",
+    date: "2020",
+  },
+  {
+    key: "L2",
+    address: "queen road",
+    date: "2020",
+  },
+  {
+    key: "L3",
+    address: "queen road",
+    date: "3000",
+  },
+];
+
+const getLatestDate = (data) => {
+  let result = [];
+  let latestDateAdd = {};
+
+  data.map((item) => {
+    let { key, address, date } = item;
+    let dateI = parseInt(date);
+
+    if (!(address in latestDateAdd) || latestDateAdd[address].date < dateI) {
+      latestDateAdd[address] = { key, date:dateI };
+    } 
+  });
+
+  result = Object.values(latestDateAdd).map((item)=>item.key)
+  return result
+};
+
+console.log(getLatestDate(data))
