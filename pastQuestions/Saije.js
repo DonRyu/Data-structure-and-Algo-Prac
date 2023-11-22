@@ -20,22 +20,22 @@ let data = [
   {
     key: "L4",
     address: "123 kings road",
-    date: "2022",
+    date: 2022,
   },
   {
     key: "L1",
     address: "123 kings road",
-    date: "2020",
+    date: 2020,
   },
   {
     key: "L2",
     address: "queen road",
-    date: "2020",
+    date: 1995,
   },
   {
     key: "L3",
     address: "queen road",
-    date: "3000",
+    date: 3000,
   },
 ];
 
@@ -48,12 +48,32 @@ const getLatestDate = (data) => {
     let dateI = parseInt(date);
 
     if (!(address in latestDateAdd) || latestDateAdd[address].date < dateI) {
-      latestDateAdd[address] = { key, date:dateI };
-    } 
+      latestDateAdd[address] = { key, date: dateI };
+    }
   });
 
-  result = Object.values(latestDateAdd).map((item)=>item.key)
-  return result
+  result = Object.values(latestDateAdd).map((item) => item.key);
+  return result;
 };
 
-console.log(getLatestDate(data))
+// { key: 'L4', address: '123 kings road', date: '2022' }
+// address : {key,date}
+
+const getLastestReduce = (data) => {
+  let result = data.reduce((acc, curr) => {
+    let { key, address, date } = curr;
+
+    if (!acc[address] || acc[address].date < date) {
+      acc[address] = { key, date };
+    }
+
+    return acc;
+  }, {});
+
+  return Object.values(result).map((item)=>item.key);
+};
+
+
+
+
+console.log(getLastestReduce(data));
