@@ -16,6 +16,9 @@
 
 // L3,L4 => [ L3 , L4]
 
+// Combine duplicated address
+// find the latest date
+
 let data = [
   {
     key: "L4",
@@ -37,43 +40,79 @@ let data = [
     address: "queen road",
     date: 3000,
   },
+  {
+    key: "L23",
+    address: "queen road",
+    date: 5000,
+  },
 ];
 
 const getLatestDate = (data) => {
   let result = [];
-  let latestDateAdd = {};
+  let newObj = {};
 
   data.map((item) => {
-    let { key, address, date } = item;
-    let dateI = parseInt(date);
-
-    if (!(address in latestDateAdd) || latestDateAdd[address].date < dateI) {
-      latestDateAdd[address] = { key, date: dateI };
+    if (!(item.address in newObj) || item.date > newObj[item.address].date) {
+      newObj[item.address] = { key: item.key, date: item.date };
     }
   });
 
-  result = Object.values(latestDateAdd).map((item) => item.key);
+  result = Object.values(newObj).map(({ key }) => key);
   return result;
 };
 
-// { key: 'L4', address: '123 kings road', date: '2022' }
-// address : {key,date}
+const getLatestDateRedu = (data) => {
+  let result = [];
 
-const getLastestReduce = (data) => {
-  let result = data.reduce((acc, curr) => {
-    let { key, address, date } = curr;
-
-    if (!acc[address] || acc[address].date < date) {
-      acc[address] = { key, date };
+  result = data.reduce((acc, curr) => {
+    if (!acc[curr.address] || acc[curr.address].date > data.date) {
+      acc[curr.address] = { key: curr.key, date: curr.date };
     }
-
-    return acc;
+    return acc
   }, {});
 
-  return Object.values(result).map((item)=>item.key);
+  return Object.values(result).map((item) => item.key);
 };
 
+console.log(getLatestDateRedu(data));
 
 
+let test = [1,2,3,4,5];
+test.forEach((item)=>{
+  return item*2;
+})
 
-console.log(getLastestReduce(data));
+console.log(test)
+
+// ------------------------------------------------------------------------------------------------
+
+// Most Common Address:
+
+// Given a set of real estate listings, find the address that appears most frequently.
+// Oldest Listing for Each Address:
+
+// Instead of finding the most recent listing, identify the oldest listing for each unique address.
+// Number of Listings per Year:
+
+// Determine the number of real estate listings for each year.
+// Listings with the Same Year:
+
+// Find all pairs of listings that have the same year.
+// Address with the Highest Total Year:
+
+// Identify the address with the highest sum of listing years.
+// Listings for a Given Year:
+
+// Given a specific year, list all real estate listings from that year.
+// Address with Multiple Listings:
+
+// Find addresses with more than one real estate listing and list the corresponding listings.
+// Listings with Unique Years:
+
+// Identify listings that have unique years (no other listings with the same year).
+// Address with the Longest Listing History:
+
+// Determine the address with the longest time span between the oldest and most recent listings.
+// Listings Sorted by Year:
+
+// Sort the real estate listings based on the listing year.
