@@ -54,46 +54,30 @@ const getLatestDateReduce = (nData) => {
   let result = [];
   result = nData.reduce((acc, cur) => {
     let { key, address, date } = cur;
-    if(!(acc[address])|| acc[address].date < date){
-      acc[address] = {key,date}; 
+    if (!acc[address] || acc[address].date < date) {
+      acc[address] = { key, date };
     }
     return acc;
-  },{});
+  }, {});
 
-  return Object.values(result).map((item)=>item.key)
+  return Object.values(result).map((item) => item.key);
 };
 
 console.log(getLatestDateReduce(nData));
 
 // ------------------------------------------------------------------------------------------------
 
-// Most Common Address:
+// Email Threads: Given a list of email threads with unique identifiers,
+// subject lines, and timestamps, write a script to find the email with the latest timestamp for each unique subject line.
 
-// Given a set of real estate listings, find the address that appears most frequently.
-// Oldest Listing for Each Address:
+// Social Media Posts: Process a set of social media posts with unique identifiers,
+// user handles, text content, and posting dates. Identify the post with the most comments and the post with the least comments for each unique user handle.
 
-// Instead of finding the most recent listing, identify the oldest listing for each unique address.
-// Number of Listings per Year:
+// File Revisions: Given a dataset of file revisions with unique identifiers,
+// filenames, authors, and modification dates, write a function to find the most recent revision and the least recent revision for each unique filename.
 
-// Determine the number of real estate listings for each year.
-// Listings with the Same Year:
+// Restaurant Menus: Process a list of restaurant menu items with unique identifiers,
+//dish names, prices, and last update dates. Determine the menu item with the highest price and the menu item with the lowest price for each unique dish name.
 
-// Find all pairs of listings that have the same year.
-// Address with the Highest Total Year:
-
-// Identify the address with the highest sum of listing years.
-// Listings for a Given Year:
-
-// Given a specific year, list all real estate listings from that year.
-// Address with Multiple Listings:
-
-// Find addresses with more than one real estate listing and list the corresponding listings.
-// Listings with Unique Years:
-
-// Identify listings that have unique years (no other listings with the same year).
-// Address with the Longest Listing History:
-
-// Determine the address with the longest time span between the oldest and most recent listings.
-// Listings Sorted by Year:
-
-// Sort the real estate listings based on the listing year.
+// Website Visits: Given a dataset of website visits with unique identifiers,
+//user IDs, page URLs, and visit timestamps, write a script to find the most recent visit and the least recent visit for each unique user ID.
