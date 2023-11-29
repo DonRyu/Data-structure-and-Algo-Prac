@@ -19,70 +19,51 @@
 // Combine duplicated address
 // find the latest date
 
-let data = [
-  {
-    key: "L4",
-    address: "123 kings road",
-    date: 2022,
-  },
-  {
-    key: "L1",
-    address: "123 kings road",
-    date: 2020,
-  },
-  {
-    key: "L2",
-    address: "queen road",
-    date: 1995,
-  },
-  {
-    key: "L3",
-    address: "queen road",
-    date: 3000,
-  },
-  {
-    key: "L23",
-    address: "queen road",
-    date: 5000,
-  },
+let dataS = [
+  "L4, 123 kings road, 2022",
+  "L1, 123 kings road, 2020",
+  "L2, 20 queen road, 1990",
+  "L3, 20 queen road, 1992",
+  "L23, 20 queen road, 2992",
 ];
+let nData = [];
 
-const getLatestDate = (data) => {
-  let result = [];
-  let newObj = {};
+for (let i = 0; i < dataS.length; i++) {
+  let arr = dataS[i].split(","); // l4,123 kings road, 2022
+  nData.push({
+    key: arr[0],
+    address: arr[1],
+    date: parseInt(arr[2]),
+  });
+}
 
-  data.map((item) => {
-    if (!(item.address in newObj) || item.date > newObj[item.address].date) {
-      newObj[item.address] = { key: item.key, date: item.date };
+//{ key: 'L4', address: ' 123 kings road', date: ' 2022' } => {123 kings road : {key:'L4',date:2022}}
+
+const getLatestDate = (nData) => {
+  let obj = {};
+  nData.map((item) => {
+    let { key, address, date } = item;
+    if (!obj[address] || obj[address].date < date) {
+      obj[address] = { key, date };
     }
   });
-
-  result = Object.values(newObj).map(({ key }) => key);
-  return result;
+  return Object.values(obj).map((item) => item.key);
 };
 
-const getLatestDateRedu = (data) => {
+const getLatestDateReduce = (nData) => {
   let result = [];
-
-  result = data.reduce((acc, curr) => {
-    if (!acc[curr.address] || acc[curr.address].date > data.date) {
-      acc[curr.address] = { key: curr.key, date: curr.date };
+  result = nData.reduce((acc, cur) => {
+    let { key, address, date } = cur;
+    if(!(acc[address])|| acc[address].date < date){
+      acc[address] = {key,date}; 
     }
-    return acc
-  }, {});
+    return acc;
+  },{});
 
-  return Object.values(result).map((item) => item.key);
+  return Object.values(result).map((item)=>item.key)
 };
 
-console.log(getLatestDateRedu(data));
-
-
-let test = [1,2,3,4,5];
-test.forEach((item)=>{
-  return item*2;
-})
-
-console.log(test)
+console.log(getLatestDateReduce(nData));
 
 // ------------------------------------------------------------------------------------------------
 
