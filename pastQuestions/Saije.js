@@ -28,42 +28,40 @@ let dataS = [
 ];
 let nData = [];
 
-for (let i = 0; i < dataS.length; i++) {
-  let arr = dataS[i].split(","); // l4,123 kings road, 2022
-  nData.push({
+dataS.map((item, key) => {
+  let arr = item.split(",");
+  nData[key] = {
     key: arr[0],
     address: arr[1],
     date: parseInt(arr[2]),
-  });
-}
+  };
+});
 
-//{ key: 'L4', address: ' 123 kings road', date: ' 2022' } => {123 kings road : {key:'L4',date:2022}}
-
-const getLatestDate = (nData) => {
-  let obj = {};
+const getLatest = (nData) => {
+  let result = [];
   nData.map((item) => {
     let { key, address, date } = item;
-    if (!obj[address] || obj[address].date < date) {
-      obj[address] = { key, date };
+    if (!(address in result) || result[address].date < date) {
+      result[address] = { key, date };
     }
   });
-  return Object.values(obj).map((item) => item.key);
+  return Object.values(result).map((item) => item.key);
 };
 
-const getLatestDateReduce = (nData) => {
+const getLatestRe = (nData) => {
   let result = [];
   result = nData.reduce((acc, cur) => {
     let { key, address, date } = cur;
     if (!acc[address] || acc[address].date < date) {
       acc[address] = { key, date };
     }
-    return acc;
+    return acc
   }, {});
 
   return Object.values(result).map((item) => item.key);
 };
 
-console.log(getLatestDateReduce(nData));
+console.log(getLatestRe(nData));
 
 // ------------------------------------------------------------------------------------------------
 
