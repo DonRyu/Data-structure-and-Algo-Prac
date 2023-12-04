@@ -26,42 +26,43 @@ let dataS = [
   "L3, 20 queen road, 1992",
   "L23, 20 queen road, 2992",
 ];
-let nData = [];
 
-dataS.map((item, key) => {
+let nData = [];
+dataS.map((item) => {
   let arr = item.split(",");
-  nData[key] = {
+  nData.push({
     key: arr[0],
     address: arr[1],
     date: parseInt(arr[2]),
-  };
+  });
 });
 
 const getLatest = (nData) => {
   let result = [];
   nData.map((item) => {
     let { key, address, date } = item;
-    if (!(address in result) || result[address].date < date) {
+
+    if (!result[address] || result[address].date < date) {
       result[address] = { key, date };
     }
   });
-  return Object.values(result).map((item) => item.key);
+  return result;
 };
 
-const getLatestRe = (nData) => {
+const getReduce = (nData) => {
   let result = [];
-  result = nData.reduce((acc, cur) => {
-    let { key, address, date } = cur;
+  result = nData.reduce((acc, curr) => {
+    let { key, address, date } = curr;
     if (!acc[address] || acc[address].date < date) {
       acc[address] = { key, date };
     }
-    return acc
-  }, {});
+    return acc;
+  },{});
 
-  return Object.values(result).map((item) => item.key);
+  return result;
 };
 
-console.log(getLatestRe(nData));
+console.log(getReduce(nData));
 
 // ------------------------------------------------------------------------------------------------
 
