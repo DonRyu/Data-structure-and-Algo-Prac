@@ -62,7 +62,7 @@ const getReduce = (nData) => {
   return result;
 };
 
-console.log(getReduce(nData));
+// console.log(getReduce(nData));
 
 // ------------------------------------------------------------------------------------------------
 
@@ -105,70 +105,87 @@ const getLatestTimeStamp = (emails) => {
   return result;
 };
 
-console.log(getLatestTimeStamp(emails))
-
-
-
 // 문제 1: 배열 평균 계산
 
 // 주어진 JSON 데이터에서 숫자로 이루어진 배열을 찾아 해당 배열의 평균값을 계산하세요.
-
-
-
 // const jsonData = {
 //   "numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 // };
 
-
-
-
-
+const getAvg = (data) => {
+  let avg = 0;
+  let len = data.numbers.length;
+  data.numbers.map((item, key) => {
+    avg += item;
+  });
+  return avg / len;
+};
 
 // 문제 2: 짝수만 필터링
-
-//     주어진 JSON 데이터에서 짝수로 이루어진 배열을 찾아 출력하세요.
-
-
-
+// 주어진 JSON 데이터에서 짝수로 이루어진 배열을 찾아 출력하세요.
 // const jsonData = {
 //   "numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 // };
 
+const getEvenNum = (data) => {
+  let result = data.numbers.filter((item) => {
+    return item % 2 == 0;
+  });
+  return result;
+};
+
 // 문제 3: 이름 길이 계산
-
-//     주어진 JSON 데이터에서 이름을 담은 배열을 찾아, 각 이름의 길이를 계산하여 새로운 배열로 출력하세요.
-
-
-
+// 주어진 JSON 데이터에서 이름을 담은 배열을 찾아, 각 이름의 길이를 계산하여 새로운 배열로 출력하세요.
 // const jsonData = {
-//   "names": ["Alice", "Bob", "Charlie", "David", "Eve"]
+//   names: ["Alice", "Bob", "Charlie", "David", "Eve"],
 // };
+
+const getNameLen = (data) => {
+  let result = data.names.map((item) => {
+    return item.length;
+  });
+  return result;
+};
 
 // 문제 4: 과일 가격 총합 계산
-
-//     주어진 JSON 데이터에서 과일과 가격으로 이루어진 배열을 찾아, 모든 과일의 가격을 더한 값을 계산하세요.
-
-
-
 // const jsonData = {
-//   "fruits": [
-//     {"name": "Apple", "price": 2},
-//     {"name": "Banana", "price": 1},
-//     {"name": "Orange", "price": 3},
-//     {"name": "Grapes", "price": 4}
-//   ]
+//   fruits: [
+//     { name: "Apple", count: 2 },
+//     { name: "Apple", count: 1 },
+//     { name: "Grapes", count: 3 },
+//     { name: "Grapes", count: 4 },
+//   ],
 // };
 
-// 문제 5: 단어 빈도수 계산
+const getNumOfFruits = (data) => {
+  let result = data.fruits.reduce((acc, cur) => {
+    let { name, count } = cur;
+    if (!acc[name]) {
+      acc[name] = count;
+    } else {
+      acc[name] += count;
+    }
+    return acc;
+  }, {});
 
-//     주어진 JSON 데이터에서 문장을 담은 배열을 찾아, 모든 단어의 빈도수를 계산하여 객체로 출력하세요.
+  return result;
+};
 
+//문제 5: 단어 빈도수 계산
+//주어진 JSON 데이터에서 문장을 담은 배열을 찾아, 모든 단어의 빈도수를 계산하여 객체로 출력하세요.
 
+const jsonData = {
+  "sentences": [
+    "This is a sample sentence.",
+    "This sentence for practice.",
+    "Sample sentence for the exercise."
+  ]
+};
 
-// const jsonData = {
-//   "sentences": [
-//     "This is a sample sentence.",
-//     "Another sentence for practice.",
-//     "Sample sentence for the exercise."
-//   ]
-// };
+const getCountStr = (data) => {
+  
+  
+};
+
+console.log(getCountStr(jsonData));
+
