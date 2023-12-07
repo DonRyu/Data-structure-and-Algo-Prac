@@ -175,17 +175,30 @@ const getNumOfFruits = (data) => {
 //주어진 JSON 데이터에서 문장을 담은 배열을 찾아, 모든 단어의 빈도수를 계산하여 객체로 출력하세요.
 
 const jsonData = {
-  "sentences": [
+  sentences: [
     "This is a sample sentence.",
-    "This sentence for practice.",
-    "Sample sentence for the exercise."
-  ]
+    "This sentence for Sample.",
+    "Sample sentence for the exercise.",
+  ],
 };
 
 const getCountStr = (data) => {
-  
-  
+  let result = {};
+
+  result = data.sentences.reduce((acc, curr) => {
+    let arr = curr.split(" ");
+
+    arr.map((item) => {
+      if (!acc[item]) {
+        acc[item] = 1;
+      } else {
+        acc[item] += 1;
+      }
+    });
+    return acc;
+  }, {});
+
+  return result;
 };
 
 console.log(getCountStr(jsonData));
-
