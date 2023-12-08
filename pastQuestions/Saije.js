@@ -201,4 +201,55 @@ const getCountStr = (data) => {
   return result;
 };
 
-console.log(getCountStr(jsonData));
+// console.log(getCountStr(jsonData));
+
+// 6
+// 문자열 리스트를 받아 모든 문자열을 합치는 함수를 작성하세요.
+// reduce 함수를 활용하세요.
+
+// 예시
+// result = concatenate_strings(strings)
+// print(result)  # 출력 결과: Hello World!
+
+let data = ["Hello", " ", "World", "!", " ", " ", "LOL"];
+
+let result = data.reduce((acc, curr) => {
+  if (curr.length>1) {
+    acc += curr;
+  }
+  return acc;
+}, " ");
+
+
+// 리스트의 모든 요소를 곱한 결과를 반환하는 함수를 작성하세요.
+// reduce 함수를 활용하세요.
+
+// 예시
+let numbers = [2, 3, 4]
+// result = multiply_elements(numbers)
+// print(result)  
+
+let res = numbers.reduce((acc,curr)=>{
+        acc *= curr;
+        return acc
+},1)
+
+// console.log(res)
+
+
+// 중복제거
+let elements = [1, 2, 2, 3, 4, 4, 5];
+
+
+
+let res2 = elements.reduce((acc,curr)=>{
+   if(!acc.includes(curr)){
+    acc.push(curr)
+   }
+   return acc;
+},[])
+
+console.log(res2)
+
+
+
