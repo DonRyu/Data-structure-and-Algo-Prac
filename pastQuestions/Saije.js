@@ -27,42 +27,27 @@ let dataS = [
   "L23, 20 queen road, 2992",
 ];
 
-let nData = [];
-dataS.map((item) => {
+// 20 queen road 2023
+
+let nData = dataS.map((item) => {
   let arr = item.split(",");
-  nData.push({
+  let result = {
     key: arr[0],
     address: arr[1],
     date: parseInt(arr[2]),
-  });
+  };
+  return result;
 });
 
-const getLatest = (nData) => {
-  let result = [];
-  nData.map((item) => {
-    let { key, address, date } = item;
+// let result = nData.reduce((acc, curr) => {
+//   let { key, address, date } = curr;
+//   if (!(acc[address]) || acc[address].date < date) {
+//     acc[address] = {key,date};
+//   }
+//   return acc;
+// }, {});
 
-    if (!result[address] || result[address].date < date) {
-      result[address] = { key, date };
-    }
-  });
-  return result;
-};
-
-const getReduce = (nData) => {
-  let result = [];
-  result = nData.reduce((acc, curr) => {
-    let { key, address, date } = curr;
-    if (!acc[address] || acc[address].date < date) {
-      acc[address] = { key, date };
-    }
-    return acc;
-  }, {});
-
-  return result;
-};
-
-// console.log(getReduce(nData));
+// console.log(Object.values(result).map((item)=>item.key));
 
 // ------------------------------------------------------------------------------------------------
 
@@ -93,33 +78,27 @@ let emails = [
   },
 ];
 
-const getLatestTimeStamp = (emails) => {
-  let result = emails.reduce((acc, curr) => {
-    let { key, subject, timeStamp } = curr;
+let result = emails.reduce((acc, curr) => {
+  let { subject, timeStamp } = curr;
+  if (!acc[subject] || acc[subject] < timeStamp) {
+    acc[subject] = timeStamp;
+  }
+  return acc;
+}, {});
 
-    if (!acc[subject] || acc[subject].timeStamp < timeStamp) {
-      acc[subject] = { key, timeStamp };
-    }
-    return acc;
-  }, {});
-  return result;
-};
+// console.log(result);
 
 // 문제 1: 배열 평균 계산
-
 // 주어진 JSON 데이터에서 숫자로 이루어진 배열을 찾아 해당 배열의 평균값을 계산하세요.
-// const jsonData = {
+// const json = {
 //   "numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 // };
+// let res = 0;
+// json.numbers.map((item)=>{
+//   res += item;
+// })
 
-const getAvg = (data) => {
-  let avg = 0;
-  let len = data.numbers.length;
-  data.numbers.map((item, key) => {
-    avg += item;
-  });
-  return avg / len;
-};
+// console.log(res/(json.numbers.length))
 
 // 문제 2: 짝수만 필터링
 // 주어진 JSON 데이터에서 짝수로 이루어진 배열을 찾아 출력하세요.
@@ -127,12 +106,11 @@ const getAvg = (data) => {
 //   "numbers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 // };
 
-const getEvenNum = (data) => {
-  let result = data.numbers.filter((item) => {
-    return item % 2 == 0;
-  });
-  return result;
-};
+// let res = jsonData.numbers.filter((item)=>{
+//     return item%2 === 0;
+// })
+
+// console.log(res)
 
 // 문제 3: 이름 길이 계산
 // 주어진 JSON 데이터에서 이름을 담은 배열을 찾아, 각 이름의 길이를 계산하여 새로운 배열로 출력하세요.
@@ -140,66 +118,53 @@ const getEvenNum = (data) => {
 //   names: ["Alice", "Bob", "Charlie", "David", "Eve"],
 // };
 
-const getNameLen = (data) => {
-  let result = data.names.map((item) => {
-    return item.length;
-  });
-  return result;
-};
+// let res = jsonData.names.map((item) => {
+//   return item.length;
+// });
+
+// console.log(res);
 
 // 문제 4: 과일 가격 총합 계산
-// const jsonData = {
-//   fruits: [
-//     { name: "Apple", count: 2 },
-//     { name: "Apple", count: 1 },
-//     { name: "Grapes", count: 3 },
-//     { name: "Grapes", count: 4 },
-//   ],
-// };
-
-const getNumOfFruits = (data) => {
-  let result = data.fruits.reduce((acc, cur) => {
-    let { name, count } = cur;
-    if (!acc[name]) {
-      acc[name] = count;
-    } else {
-      acc[name] += count;
-    }
-    return acc;
-  }, {});
-
-  return result;
+const jsonData = {
+  fruits: [
+    { name: "Apple", count: 2 },
+    { name: "Apple", count: 1 },
+    { name: "Grapes", count: 3 },
+    { name: "Grapes", count: 4 },
+  ],
 };
+
+// let test = {'jim':0}
+// if(!test['jim']){
+//   console.log('si')
+// }
+
+// if(0){
+//   console.log('ryuryulemon')
+// }
+
+let res = jsonData.fruits.reduce((acc, curr) => {
+  let { name, count } = curr;
+  if (!acc[name]) {
+    acc[name] = count;
+  } else {
+    acc[name] += count;
+  }
+  return acc;
+}, {});
+
+ console.log(res);
 
 //문제 5: 단어 빈도수 계산
 //주어진 JSON 데이터에서 문장을 담은 배열을 찾아, 모든 단어의 빈도수를 계산하여 객체로 출력하세요.
 
-const jsonData = {
-  sentences: [
-    "This is a sample sentence.",
-    "This sentence for Sample.",
-    "Sample sentence for the exercise.",
-  ],
-};
-
-const getCountStr = (data) => {
-  let result = {};
-
-  result = data.sentences.reduce((acc, curr) => {
-    let arr = curr.split(" ");
-
-    arr.map((item) => {
-      if (!acc[item]) {
-        acc[item] = 1;
-      } else {
-        acc[item] += 1;
-      }
-    });
-    return acc;
-  }, {});
-
-  return result;
-};
+// const jsonData = {
+//   sentences: [
+//     "This is a sample sentence.",
+//     "This sentence for Sample.",
+//     "Sample sentence for the exercise.",
+//   ],
+// };
 
 // console.log(getCountStr(jsonData));
 
@@ -213,43 +178,15 @@ const getCountStr = (data) => {
 
 let data = ["Hello", " ", "World", "!", " ", " ", "LOL"];
 
-let result = data.reduce((acc, curr) => {
-  if (curr.length>1) {
-    acc += curr;
-  }
-  return acc;
-}, " ");
-
-
 // 리스트의 모든 요소를 곱한 결과를 반환하는 함수를 작성하세요.
 // reduce 함수를 활용하세요.
 
 // 예시
-let numbers = [2, 3, 4]
+let numbers = [2, 3, 4];
 // result = multiply_elements(numbers)
-// print(result)  
-
-let res = numbers.reduce((acc,curr)=>{
-        acc *= curr;
-        return acc
-},1)
+// print(result)
 
 // console.log(res)
 
-
 // 중복제거
 let elements = [1, 2, 2, 3, 4, 4, 5];
-
-
-
-let res2 = elements.reduce((acc,curr)=>{
-   if(!acc.includes(curr)){
-    acc.push(curr)
-   }
-   return acc;
-},[])
-
-console.log(res2)
-
-
-
