@@ -125,14 +125,14 @@ let result = emails.reduce((acc, curr) => {
 // console.log(res);
 
 // 문제 4: 과일 가격 총합 계산
-const jsonData = {
-  fruits: [
-    { name: "Apple", count: 2 },
-    { name: "Apple", count: 1 },
-    { name: "Grapes", count: 3 },
-    { name: "Grapes", count: 4 },
-  ],
-};
+// const jsonData = {
+//   fruits: [
+//     { name: "Apple", count: 2 },
+//     { name: "Apple", count: 1 },
+//     { name: "Grapes", count: 3 },
+//     { name: "Grapes", count: 4 },
+//   ],
+// };
 
 // let test = {'jim':0}
 // if(!test['jim']){
@@ -143,30 +143,42 @@ const jsonData = {
 //   console.log('ryuryulemon')
 // }
 
-let res = jsonData.fruits.reduce((acc, curr) => {
-  let { name, count } = curr;
-  if (!acc[name]) {
-    acc[name] = count;
-  } else {
-    acc[name] += count;
-  }
-  return acc;
-}, {});
+// let res = jsonData.fruits.reduce((acc, curr) => {
+//   let { name, count } = curr;
+//   if (!acc[name]) {
+//     acc[name] = count;
+//   } else {
+//     acc[name] += count;
+//   }
+//   return acc;
+// }, {});
 
- console.log(res);
+//  console.log(res);
 
 //문제 5: 단어 빈도수 계산
 //주어진 JSON 데이터에서 문장을 담은 배열을 찾아, 모든 단어의 빈도수를 계산하여 객체로 출력하세요.
 
-// const jsonData = {
-//   sentences: [
-//     "This is a sample sentence.",
-//     "This sentence for Sample.",
-//     "Sample sentence for the exercise.",
-//   ],
-// };
+const jsonData = {
+  sentences: [
+    "This is a sample sentence.",
+    "This sentence for Sample.",
+    "Sample sentence for the exercise.",
+  ],
+};
 
-// console.log(getCountStr(jsonData));
+// let res = jsonData.sentences.reduce((acc, curr) => {
+//   let arr = curr.split(" ");
+//   arr.map((item) => {
+//     if (!acc[item]) {
+//       acc[item] = 1;
+//     } else {
+//       acc[item] += 1;
+//     }
+//   });
+//   return acc;
+// }, {});
+
+// console.log(res);
 
 // 6
 // 문자열 리스트를 받아 모든 문자열을 합치는 함수를 작성하세요.
@@ -174,19 +186,22 @@ let res = jsonData.fruits.reduce((acc, curr) => {
 
 // 예시
 // result = concatenate_strings(strings)
-// print(result)  # 출력 결과: Hello World!
-
-let data = ["Hello", " ", "World", "!", " ", " ", "LOL"];
-
-// 리스트의 모든 요소를 곱한 결과를 반환하는 함수를 작성하세요.
-// reduce 함수를 활용하세요.
-
-// 예시
-let numbers = [2, 3, 4];
-// result = multiply_elements(numbers)
 // print(result)
 
-// console.log(res)
+// let data = ["Hello", " ", "World", "!", " ", " ", "LOL"];
+
+// let res = data.reduce((acc, curr) => {
+//   if (curr.length > 1) {
+//     acc += curr;
+//   }
+
+//   return acc;
+// }, "");
+
+// console.log(res);
 
 // 중복제거
 let elements = [1, 2, 2, 3, 4, 4, 5];
+
+
+
