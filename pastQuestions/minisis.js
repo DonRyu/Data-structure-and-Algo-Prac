@@ -6,6 +6,9 @@
 // 그냥 text file과 database의 차이가 머냐?
 
 
+// toUppercase가 머냐고 인터뷰어 한테 물었는데, 사장이 인터뷰 보는 사람 누구냐고 이야기함, 내가 잘못한건가?
+
+
 // part 2
 // 1a.) Obesverations: We have a string an initial string and need to have it changed.
 // Look at the original string (abcAEBCCfg) and it needs to morph/change to (A2B2C3E1F1G1).
@@ -65,4 +68,19 @@ const ChangeString = (str) => {
   return answer.toUpperCase();
 };
 
-console.log(ChangeString(str));
+// console.log(ChangeString(str));
+
+
+
+
+
+
+//--------------------------------------------------------------------------------------------
+
+
+let test2 = 'asdfb'
+
+
+test2.reduce((acc,curr)=>{
+    console.log(curr)
+},{})
