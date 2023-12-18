@@ -44,14 +44,7 @@ const ChangeString = (str) => {
     }
   }
 
-  //   let map = str.reduce((acc, curr) => {
-  //     if (acc[curr]) {
-  //       acc[curr] += 1;
-  //     } else {
-  //       acc[curr] = 1;
-  //     }
-  //     return acc;
-  //   }, {});
+
 
   keyArr = Object.keys(map); // [a,b,c,d]
   valueArr = Object.values(map); // [1,2,3]
@@ -77,10 +70,3 @@ const ChangeString = (str) => {
 
 //--------------------------------------------------------------------------------------------
 
-
-let test2 = 'asdfb'
-
-
-test2.reduce((acc,curr)=>{
-    console.log(curr)
-},{})
