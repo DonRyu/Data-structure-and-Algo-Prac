@@ -22,10 +22,7 @@
 // objevt.Value() => [2,1,1]
 
 let test = { a: 1, b: 2 };
-
 let str = "abcAEBCCfg";
-
-// console.log(JSON.stringify(test)); // {"a":1,"b":2} // split(':')
 
 const ChangeString = (str) => {
   let lowerStr = str.toLowerCase();
@@ -87,4 +84,35 @@ const changeString2 = (str) => {
   return result;
 };
 
-console.log(changeString2("abcAEBCCfg"));
+// console.log(changeString2("abcAEBCCfg"));
+
+//----------------- join으로 풀이 abcAEBCCfg => A2B2C3E1F1G1
+
+const changeString = (str) => {
+  let map = {};
+  let smStr = str.toLowerCase();
+  let valueArr = [];
+  let keyArr = [];
+  let result = "";
+
+  for (let i = 0; i < smStr.length; i++) {
+    if (map[smStr[i]]) {
+      map[smStr[i]] += 1;
+    } else {
+      map[smStr[i]] = 1;
+    }
+  }
+
+  valueArr = Object.values(map);
+  keyArr = Object.keys(map);
+
+  for (let i = 0; i < smStr.length - 6; i++) {
+    result += `${keyArr[i]}${valueArr[i]}`
+  }
+  return result.toUpperCase();
+};
+
+
+// p1: if the input is not alphabetical order
+// p2: combine for loop's iteration times are not flexible
+console.log("===>", changeString("zabcAEBCCfgZ"));
