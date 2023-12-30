@@ -87,11 +87,12 @@ const changeString2 = (str) => {
 // console.log(changeString2("abcAEBCCfg"));
 
 //----------------- join으로 풀이 abcAEBCCfg => A2B2C3E1F1G1
+// p1: if the input is not alphabetical order
+// p2: combine for loop's iteration times are not flexible
 
 const changeString = (str) => {
   let map = {};
   let smStr = str.toLowerCase();
-  let valueArr = [];
   let keyArr = [];
   let result = "";
 
@@ -103,16 +104,14 @@ const changeString = (str) => {
     }
   }
 
-  valueArr = Object.values(map);
-  keyArr = Object.keys(map);
+  keyArr = Object.keys(map).sort();
 
-  for (let i = 0; i < smStr.length - 6; i++) {
-    result += `${keyArr[i]}${valueArr[i]}`
+  for (let i = 0; i < keyArr.length; i++) {
+    result += `${keyArr[i]}${map[keyArr[i]]}`
   }
   return result.toUpperCase();
 };
 
 
-// p1: if the input is not alphabetical order
-// p2: combine for loop's iteration times are not flexible
+
 console.log("===>", changeString("zabcAEBCCfgZ"));
