@@ -107,11 +107,16 @@ const changeString = (str) => {
   keyArr = Object.keys(map).sort();
 
   for (let i = 0; i < keyArr.length; i++) {
-    result += `${keyArr[i]}${map[keyArr[i]]}`
+    result += `${keyArr[i]}${map[keyArr[i]]}`;
   }
   return result.toUpperCase();
 };
 
-
-
 console.log("===>", changeString("zabcAEBCCfgZ"));
+
+const entries = [
+  ["c", 3],
+  ["b", 4],
+];
+const obj = Object.fromEntries(entries);
+console.log("obj", obj);
